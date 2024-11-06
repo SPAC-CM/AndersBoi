@@ -7,7 +7,7 @@
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 "Downloads");
 
-
+        Random r = new Random(22);
         
 
         public async Task<bool> DownloadFileAsync(string fileName, string url)
@@ -83,20 +83,24 @@
         }
 
 #if(DEBUG)
-        public async Task ProxyDownload(int startRow, int endRow)
+        public void ProxyDownload(ref List<URL_Data> data)
         {
             //Set random some of the download to be false
-            Random r = new Random(22);
 
-            for (int i = startRow; i < endRow; i++)
-            {
-                //75% chance for link be good
-                int randomNumber = r.Next(100);
-                //if (randomNumber > 75)
-                //    item.Item3 = false;
+        }
 
-                await Task.Delay(100);
-            }
+        async Task<bool> ProxyDownload(URL_Data targetData)
+        {
+            if(!targetData.validLink)
+                return false;
+
+            bool foundDownload = true;
+            if (r.Next(100) > 75)
+                foundDownload = false;
+
+            await Task.Delay(50 + r.Next(100));
+
+            return foundDownload;
         }
 #endif
     }

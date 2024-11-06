@@ -61,7 +61,7 @@ try
     List<Task> downloadTasks = new List<Task>();
     for (int i = 0; i < rowChunks.Count; i++)
     {
-        //downloadTasks.Add(httpManager.ProxyDownload(collectedData), rowChunks[i].Item1, rowChunks[i].Item2);
+        downloadTasks.Add(httpManager.ProxyDownload(collectedData, rowChunks[i].Item1, rowChunks[i].Item2);
     }
 
     await Task.WhenAll(downloadTasks);
@@ -70,8 +70,6 @@ try
 
     //Write 
     // Devide into task
-    
-
 }
 catch (Exception e)
 {
