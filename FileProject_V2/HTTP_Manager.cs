@@ -82,25 +82,16 @@
             }
         }
 
-#if(DEBUG)
-        public void ProxyDownload(ref List<URL_Data> data)
+#if (DEBUG)
+        public async Task<(int, bool)> ProxyDownload(URL_Data targetData, int dataIndex)
         {
-            //Set random some of the download to be false
-
-        }
-
-        async Task<bool> ProxyDownload(URL_Data targetData)
-        {
-            if(!targetData.validLink)
-                return false;
-
             bool foundDownload = true;
-            if (r.Next(100) > 75)
+            if (Random.Shared.Next(100) > 75)
                 foundDownload = false;
 
-            await Task.Delay(50 + r.Next(100));
+            await Task.Delay(50 + Random.Shared.Next(100));
 
-            return foundDownload;
+            return (dataIndex, foundDownload);
         }
 #endif
     }

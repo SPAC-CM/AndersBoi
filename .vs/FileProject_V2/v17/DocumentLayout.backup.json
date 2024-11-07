@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|solutionrelative:fileproject_v2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|c:\\users\\a-spac08\\arbejde\\fileproject_v2\\fileproject_v2\\http_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|solutionrelative:fileproject_v2\\http_manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|c:\\users\\a-spac08\\arbejde\\fileproject_v2\\fileproject_v2\\url_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|solutionrelative:fileproject_v2\\url_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|c:\\users\\a-spac08\\arbejde\\fileproject_v2\\fileproject_v2\\excelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|solutionrelative:fileproject_v2\\excelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,6 +35,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "HTTP_Manager.cs",
+              "DocumentMoniker": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\HTTP_Manager.cs",
+              "RelativeDocumentMoniker": "FileProject_V2\\HTTP_Manager.cs",
+              "ToolTip": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\HTTP_Manager.cs",
+              "RelativeToolTip": "FileProject_V2\\HTTP_Manager.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAWwFYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T13:41:25.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ExcelManager.cs",
               "DocumentMoniker": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\ExcelManager.cs",
               "RelativeDocumentMoniker": "FileProject_V2\\ExcelManager.cs",
@@ -44,10 +65,22 @@
               "RelativeDocumentMoniker": "FileProject_V2\\Program.cs",
               "ToolTip": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\Program.cs",
               "RelativeToolTip": "FileProject_V2\\Program.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAgwEgAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAuwFQAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T12:47:54.699Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "URL_Data.cs",
+              "DocumentMoniker": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\URL_Data.cs",
+              "RelativeDocumentMoniker": "FileProject_V2\\URL_Data.cs",
+              "ToolTip": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\URL_Data.cs",
+              "RelativeToolTip": "FileProject_V2\\URL_Data.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T13:39:41.906Z"
             }
           ]
         }

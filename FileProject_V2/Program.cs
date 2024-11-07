@@ -43,7 +43,7 @@ try
     //Collect results
     foreach (var item in taskResult)
     {
-        //collectedData.AddRange(item);
+        collectedData.AddRange(item);
     }
 
     // Find bad results
@@ -58,18 +58,32 @@ try
     // Download
     // Devide into task
     // Can use rowChunks again because the lenght of the list should be the same lenght.
-    List<Task> downloadTasks = new List<Task>();
-    for (int i = 0; i < rowChunks.Count; i++)
+    var downloadTasks = new List<Task<(int, bool)>>();
+    for (global::System.Int32 i = 0; i < collectedData.Count; i++)
     {
-        downloadTasks.Add(httpManager.ProxyDownload(collectedData, rowChunks[i].Item1, rowChunks[i].Item2);
+        if (collectedData[i].validLink)
+        {
+            downloadTasks.Add(httpManager.ProxyDownload(collectedData[i], i));
+        }
     }
 
-    await Task.WhenAll(downloadTasks);
+    var downloadResult = await Task.WhenAll(downloadTasks);
+
+    //Update data with download result
+    foreach ((int, bool) item in downloadResult)
+    {
+        collectedData[item.Item1].validLink = item.Item2;
+    }
+
+    //Updata download status in colleced data
 
     Console.WriteLine("Give rapport");
 
     //Write 
-    // Devide into task
+    foreach (URL_Data item in collectedData)
+    {
+        Console.WriteLine($"{item.BR_Nummer}, Download state: {item.validLink}");
+    }
 }
 catch (Exception e)
 {
