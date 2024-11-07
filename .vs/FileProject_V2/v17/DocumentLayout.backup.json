@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|c:\\users\\a-spac08\\arbejde\\fileproject_v2\\fileproject_v2\\excelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|solutionrelative:fileproject_v2\\excelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|c:\\users\\a-spac08\\arbejde\\fileproject_v2\\fileproject_v2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|solutionrelative:fileproject_v2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|c:\\users\\a-spac08\\arbejde\\fileproject_v2\\fileproject_v2\\url_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|solutionrelative:fileproject_v2\\url_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|c:\\users\\a-spac08\\arbejde\\fileproject_v2\\fileproject_v2\\excelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ACBD740F-2F32-44CE-97F9-EED7618F7C8C}|FileProject_V2\\FileProject_V2.csproj|solutionrelative:fileproject_v2\\excelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,51 +34,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "HTTP_Manager.cs",
               "DocumentMoniker": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\HTTP_Manager.cs",
               "RelativeDocumentMoniker": "FileProject_V2\\HTTP_Manager.cs",
               "ToolTip": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\HTTP_Manager.cs",
               "RelativeToolTip": "FileProject_V2\\HTTP_Manager.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAWwFYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAgwGMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T13:41:25.066Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "ExcelManager.cs",
               "DocumentMoniker": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\ExcelManager.cs",
               "RelativeDocumentMoniker": "FileProject_V2\\ExcelManager.cs",
               "ToolTip": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\ExcelManager.cs",
               "RelativeToolTip": "FileProject_V2\\ExcelManager.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAcwFcAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAmwIwAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T13:02:51.055Z"
+              "WhenOpened": "2024-11-06T13:02:51.055Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\Program.cs",
               "RelativeDocumentMoniker": "FileProject_V2\\Program.cs",
               "ToolTip": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\Program.cs",
               "RelativeToolTip": "FileProject_V2\\Program.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAuwFQAAABOAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAUwEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T12:47:54.699Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "URL_Data.cs",
               "DocumentMoniker": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\URL_Data.cs",
               "RelativeDocumentMoniker": "FileProject_V2\\URL_Data.cs",
               "ToolTip": "C:\\Users\\A-SPAC08\\Arbejde\\FileProject_V2\\FileProject_V2\\URL_Data.cs",
               "RelativeToolTip": "FileProject_V2\\URL_Data.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T13:39:41.906Z"
             }

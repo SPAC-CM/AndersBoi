@@ -131,18 +131,45 @@ public class ExcelManager
         }
     }
 
-    public void WriteDownloadResult(bool resultState, int row)
+
+    public void WriteRapport(List<URL_Data> urlDataList)
     {
-        using (var package = new ExcelPackage(metaDataPath))
+        // Get the current directory
+        string currentDirectory = Directory.GetCurrentDirectory();
+
+        // Create a file path relative to the current directory
+        string filePath = Path.Combine(currentDirectory, "rapport.xlsx");
+
+        // Create a new ExcelPackage object
+        using (var package = new ExcelPackage())
         {
-            var worksheet = package.Workbook.Worksheets.FirstOrDefault();
+            // Create a new workbook
+            var workbook = package.Workbook;
 
-            ExcelRange ATcell = worksheet.Cells[row, 46];
+            // Create a new worksheet named "rapport"
+            var worksheet = workbook.Worksheets.Add("rapport");
 
-            if (resultState)
-                ATcell.Value = "Downloaded";
-            else
-                ATcell.Value = "Not downloaded";
+            // Set up the header row
+            worksheet.Cells[1, 1].Value = "BR_Number";
+            worksheet.Cells[1, 2].Value = "Download Status";
+            worksheet.Cells[1, 3].Value = "URL";
+
+            // Start writing data from row 2
+            int rowIndex = 2;
+
+            foreach (var urlData in urlDataList)
+            {
+                worksheet.Cells[rowIndex, 1].Value = urlData.BR_Nummer;
+                worksheet.Cells[rowIndex, 2].Value = urlData.validLink ? "Downloaded" : "Failed to download";
+                worksheet.Cells[rowIndex, 3].Value = urlData.URL;
+
+                rowIndex++;
+            }
+
+            // Save the workbook
+            package.SaveAs(filePath);
+
+            Console.WriteLine($"Rapport saved successfully to {filePath}");
         }
     }
 }

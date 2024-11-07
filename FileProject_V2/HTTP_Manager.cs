@@ -1,4 +1,6 @@
-﻿namespace FileProject
+﻿using OfficeOpenXml;
+
+namespace FileProject
 {
     public class HTTP_Manager
     {
@@ -94,5 +96,7 @@
             return (dataIndex, foundDownload);
         }
 #endif
+
+
     }
 }

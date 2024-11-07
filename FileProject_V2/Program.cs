@@ -80,10 +80,7 @@ try
     Console.WriteLine("Give rapport");
 
     //Write 
-    foreach (URL_Data item in collectedData)
-    {
-        Console.WriteLine($"{item.BR_Nummer}, Download state: {item.validLink}");
-    }
+    excelManager.WriteRapport(collectedData);
 }
 catch (Exception e)
 {
