@@ -9,3 +9,5 @@ The folder needs a file called "GRI_2017_2020.xlsx", if not there the program wi
 
 Close XL dokument then program is running. If not, it can not update them.
 
+# Testing enviorment
+For tesing, it's set to run the first 20 links and download them. To make it run the holde XL, remove the change to rowCount in line 15 in Program 
