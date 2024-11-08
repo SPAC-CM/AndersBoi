@@ -5,11 +5,17 @@ namespace FileProject
 {
     public class HTTP_Manager
     {
+        /// <summary>
+        /// Manage the HTTP request and download
+        /// </summary>
+
         private readonly HttpClient client = new();
+        //Download path
         private string downloadsPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 "Downloads");
 
+        //To test
         Random r = new Random(22);
 
         public async Task<(int, bool)> DownloadFileAsync(URL_Data data, int collextionIndex)
@@ -73,26 +79,14 @@ namespace FileProject
             return errorReturn;
         }
 
-        public async Task<string> GetAsync(string uri)
-        {
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    var response = await client.GetAsync("https://example.com");
-                    response.EnsureSuccessStatusCode(); // Throws if not successful
-
-                    int statusCode = (int)response.StatusCode;
-                    return $"Status Code: {(int)statusCode}";
-                }
-            }
-            catch (HttpRequestException e)
-            {
-                return ($"An error occurred: {e.Message}");
-            }
-        }
 
 #if (DEBUG)
+        /// <summary>
+        /// Used as proxy to test download.
+        /// </summary>
+        /// <param name="targetData"></param>
+        /// <param name="dataIndex"></param>
+        /// <returns></returns>
         public async Task<(int, bool)> ProxyDownload(URL_Data targetData, int dataIndex)
         {
             bool foundDownload = true;

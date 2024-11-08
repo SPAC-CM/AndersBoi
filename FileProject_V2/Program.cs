@@ -3,17 +3,20 @@
 
 
 
-int threadDevider = 1000;
+int threadDevider = 1000; //A magic number for have many rows i want in a thread
 
 try
 {
+    //Setup for functions
     ExcelManager excelManager = new ExcelManager();
     HTTP_Manager httpManager = new HTTP_Manager();
 
+    //Find rows
     int rowCount = excelManager.GetNumberOfGRI_Rows();
     //Download 20
-    rowCount = 20; 
+    rowCount = 20;
 
+    //Divede rows onto threads
     int numberOfThreads = 1;
     if(rowCount > threadDevider)
         numberOfThreads = rowCount / threadDevider;
@@ -25,7 +28,7 @@ try
     for (int i = 0; i < numberOfThreads; i++)
     {
         int endValue = (i + 1) * threadDevider;
-        if(endValue > rowCount)
+        if(endValue > rowCount) //Stop its from having more them max rows
             endValue = rowCount;
 
         rowChunks.Add((i * threadDevider + 1, endValue));
@@ -42,7 +45,6 @@ try
 
     //Wait for all rows to be read
     var taskResult = await Task.WhenAll(tasks);
-
     Console.WriteLine("Download found");
 
     //Collect results
@@ -88,8 +90,6 @@ catch (Exception e)
 {
     Console.WriteLine(e);
 }
-
-
 
 Console.WriteLine("Jobs done. Press any key to end...");
 Console.ReadKey();

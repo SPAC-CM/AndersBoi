@@ -5,6 +5,10 @@ namespace FileProject;
 
 public class ExcelManager
 {
+    /// <summary>
+    /// This class handle all interaction with the XL file
+    /// </summary>
+
     //File names
     public const string GRI_dataPath = "GRI_2017_2020.xlsx";
     public const string metaDataPath = "Metadata2006_2016.xlsx";
@@ -35,6 +39,10 @@ public class ExcelManager
         }
     }
 
+    /// <summary>
+    /// Give Count of rows in GRI_2017_2020
+    /// </summary>
+    /// <returns></returns>
     public int GetNumberOfGRI_Rows()
     {
         using (var package = new ExcelPackage(GRI_dataPath))
@@ -43,10 +51,6 @@ public class ExcelManager
             return worksheet.Rows.Count();
         }
     }
-
-    public List<string> ReadMetaRow(int rowIndex) => ReadRowFromExcel(metaDataPath, rowIndex);
-
-    public List<string> ReadGRIRow(int rowIndex) => ReadRowFromExcel(GRI_dataPath, rowIndex);
 
 
     public List<string> ReadRowFromExcel(string filePath, int rowIndex)
@@ -75,14 +79,24 @@ public class ExcelManager
         }
     }
 
+    /// <summary>
+    /// Reads data from multipul rows in Xl.
+    /// Returns what it finds
+    /// </summary>
+    /// <param name="filePath"></param>
+    /// <param name="startRow"></param>
+    /// <param name="endRow"></param>
+    /// <returns>URL_Data in a list</returns>
     public async Task<List<URL_Data>> ReadMultipulRowsWithLinks(string filePath, int startRow, int endRow)
     {
+        //Check for wrong reading of file
         if(startRow >= endRow)
         {
             Console.WriteLine("Reading mul link where start is bigger then end");
             return null;
         }
 
+        //Read file
         using (var package = new ExcelPackage(filePath))
         {
             var worksheet = package.Workbook.Worksheets.FirstOrDefault();
@@ -114,6 +128,7 @@ public class ExcelManager
                             link = am.Value.ToString();
                     }
 
+                    //Add to return
                     values.Add(new URL_Data(cellA, link, true));
                 }
             }
@@ -121,7 +136,10 @@ public class ExcelManager
         }
     }
 
-
+    /// <summary>
+    /// Write a rapport if the result of the program to folder
+    /// </summary>
+    /// <param name="urlDataList">The dataset</param>
     public void WriteRapport(List<URL_Data> urlDataList)
     {
         // Get the current directory
@@ -145,8 +163,6 @@ public class ExcelManager
             worksheet.Cells[1, 1].Value = "BR_Number";
             worksheet.Cells[1, 2].Value = "Download Status";
             worksheet.Cells[1, 3].Value = "URL";
-
-
 
             // Start writing data from row 2
             int rowIndex = 2;
