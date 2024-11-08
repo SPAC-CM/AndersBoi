@@ -11,9 +11,14 @@ try
     HTTP_Manager httpManager = new HTTP_Manager();
 
     int rowCount = excelManager.GetNumberOfGRI_Rows();
-    int numberOfThreads = rowCount / threadDevider;
+    //Download 20
+    rowCount = 20; 
 
+    int numberOfThreads = 1;
+    if(rowCount > threadDevider)
+        numberOfThreads = rowCount / threadDevider;
     var collectedData = new List<URL_Data> ();
+
 
     //Deviede rows into chunks
     List<(int, int)> rowChunks = new List<(int, int)> ();
@@ -38,7 +43,7 @@ try
     //Wait for all rows to be read
     var taskResult = await Task.WhenAll(tasks);
 
-    Console.WriteLine("Download data");
+    Console.WriteLine("Download found");
 
     //Collect results
     foreach (var item in taskResult)
@@ -57,16 +62,16 @@ try
 
     // Download
     // Devide into task
-    // Can use rowChunks again because the lenght of the list should be the same lenght.
+    // Can use rowChunks again because the lenght of the list should be the same lenght.    
+    Console.WriteLine("Download data");
     var downloadTasks = new List<Task<(int, bool)>>();
     for (global::System.Int32 i = 0; i < collectedData.Count; i++)
     {
         if (collectedData[i].validLink)
         {
-            downloadTasks.Add(httpManager.ProxyDownload(collectedData[i], i));
+            downloadTasks.Add(httpManager.DownloadFileAsync(collectedData[i], i));
         }
     }
-
     var downloadResult = await Task.WhenAll(downloadTasks);
 
     //Update data with download result
@@ -76,10 +81,7 @@ try
     }
 
     //Updata download status in colleced data
-
     Console.WriteLine("Give rapport");
-
-    //Write 
     excelManager.WriteRapport(collectedData);
 }
 catch (Exception e)

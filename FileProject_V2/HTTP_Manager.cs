@@ -1,4 +1,5 @@
-﻿using OfficeOpenXml;
+﻿using System.Net.Http.Headers;
+using System.Net.Mime;
 
 namespace FileProject
 {
@@ -10,12 +11,13 @@ namespace FileProject
                 "Downloads");
 
         Random r = new Random(22);
-        
 
-        public async Task<bool> DownloadFileAsync(string fileName, string url)
+        public async Task<(int, bool)> DownloadFileAsync(URL_Data data, int collextionIndex)
         {
+            var errorReturn = (collextionIndex, false);
             try
             {
+
                 // Get the Downloads folder path
                 string downloadsPath = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
@@ -27,42 +29,48 @@ namespace FileProject
                 // Download the file
                 using (var client = new HttpClient())
                 {
-                    var response = await client.GetAsync(url);
+                    // Set the user agent string
+                    client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.6367.61 Safari/537.36");
+
+                    // Request URL
+                    var response = await client.GetAsync(data.URL);
                     if (response.IsSuccessStatusCode)
                     {
-                        using (var fileStream = new FileStream(uniqueFileName, FileMode.Create))
+                        //Check for content
+                        if (response.Content.Headers.ContentLength.Value > 0 &&
+                            response.Content.Headers.ContentType.MediaType == "application/pdf")
                         {
-                            await response.Content.CopyToAsync(fileStream);
-                        }
+                            //Download Content
+                            using (var fileStream = new FileStream(uniqueFileName, FileMode.Create))
+                            {
+                                await response.Content.CopyToAsync(fileStream);
+                            }
 
-                        // Rename the file
-                        File.Move(uniqueFileName, Path.Combine(downloadsPath, fileName + ".pdf"));
+                            // Rename the file
+                            File.Move(uniqueFileName, Path.Combine(downloadsPath, data.BR_Nummer + ".pdf"));
+
+                            //Tell download status
+                            return (collextionIndex, true);
+                        }
+                        //else
+                        //{
+                        //    //Debug HTTP request
+                        //    Console.WriteLine($"{data.BR_Nummer}, Lenght: {response.Content.Headers.ContentLength.Value}. Type: {response.Content.Headers.ContentType.MediaType}");
+                        //}
                     }
                     else
-                        return false;
-
-                    //Tell download status
-                    return true;
+                    {
+                        //Console.WriteLine($"{data.BR_Nummer}: {response}"); Tell respond
+                        return errorReturn;
+                    }
                 }
-
-
             }
-            catch (HttpRequestException ex)
+            catch (Exception e)
             {
-                Console.WriteLine($"An error occurred while downloading the file: {ex.Message}");
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine($"An error occurred while writing to the file: {ex.Message}");
-                Console.WriteLine($"Current working directory: {Environment.CurrentDirectory}");
-                Console.WriteLine($"Current working directory: {Environment.CurrentDirectory}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                Console.WriteLine($"{data.BR_Nummer}: {e.Message}");
             }
 
-            return false;
+            return errorReturn;
         }
 
         public async Task<string> GetAsync(string uri)

@@ -10,7 +10,7 @@ public class ExcelManager
     public const string metaDataPath = "Metadata2006_2016.xlsx";
 
     //Rapport file
-    private const string rapportFilePath = "DownloadRapport.xlsx";
+    private const string rapportName = "Rapport.xlsx";
 
     public ExcelManager()
     {
@@ -32,16 +32,6 @@ public class ExcelManager
             Console.WriteLine(e.ToString());
             Console.WriteLine("XL not found");
             Console.ReadKey();
-        }
-
-        if(!File.Exists(rapportFilePath))
-        {
-            //Excel.Application excelApp = new Excel.Application();
-            //Excel.Workbook workbook = excelApp.Workbooks.Add(XlFileFormat.xlWorkbookNormal);
-            //Excel.Worksheet worksheet = (Excel.Worksheet)workbook.ActiveSheet;
-
-            //// Save as xlsm file
-            //workbook.SaveAs("example.xlsm", Excel.XlFileFormat.xlOpenXMLWorkbookMacroEnabled);
         }
     }
 
@@ -138,9 +128,8 @@ public class ExcelManager
         string currentDirectory = Directory.GetCurrentDirectory();
 
         // Create a file path relative to the current directory
-        string filePath = Path.Combine(currentDirectory, "rapport.xlsx");
+        string filePath = Path.Combine(currentDirectory, rapportName);
 
-        // Create a new ExcelPackage object
         using (var package = new ExcelPackage())
         {
             // Create a new workbook
@@ -149,10 +138,15 @@ public class ExcelManager
             // Create a new worksheet named "rapport"
             var worksheet = workbook.Worksheets.Add("rapport");
 
+            //Count downloaded
+            int sucDownload = 0;
+
             // Set up the header row
             worksheet.Cells[1, 1].Value = "BR_Number";
             worksheet.Cells[1, 2].Value = "Download Status";
             worksheet.Cells[1, 3].Value = "URL";
+
+
 
             // Start writing data from row 2
             int rowIndex = 2;
@@ -163,13 +157,18 @@ public class ExcelManager
                 worksheet.Cells[rowIndex, 2].Value = urlData.validLink ? "Downloaded" : "Failed to download";
                 worksheet.Cells[rowIndex, 3].Value = urlData.URL;
 
+                if(urlData.validLink)
+                    sucDownload++;
+
                 rowIndex++;
             }
 
+            // Resume of the data
+            worksheet.Cells[1, 5].Value = "Succesful download";
+            worksheet.Cells[2, 5].Value = $"{sucDownload} / {rowIndex}"; 
+
             // Save the workbook
             package.SaveAs(filePath);
-
-            Console.WriteLine($"Rapport saved successfully to {filePath}");
         }
     }
 }
