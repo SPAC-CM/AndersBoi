@@ -6,5 +6,6 @@ The program run automaticly. Do not need input or interaction.
 # Requrioment
 The folder needs a file called "GRI_2017_2020.xlsx", if not there the program will fail.
 - Move coluems around from Original "GRI_2017_2020.xlsx" will result in errors.
+
 Close XL dokument then program is running. If not, it can not update them.
 
