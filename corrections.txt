@@ -1,0 +1,27 @@
+Add which folder the project should be run from
+Add where GRI and Metadata file should be placed
+Better null handling instead of warnings:
+	ExcelManager: line 51 -> 
+			if(worksheet is not null){
+				return worksheet.Rows.Count();
+			}
+			else {
+		   		return 0;
+		   	}
+			line 66 ->
+				if(worksheet is not null){
+			line 84 ->
+				}
+				else{
+					return new List<string>();
+				}
+State where the files will be downloaded. It is good practice to not put them outside of the project dir, unless you manually input directory
+Remove commented code, it just confuses more than it helps:
+	HTTP_Manager.cs line 61->65
+Add how to run the project
+Stop using readkey unless specifically needing userinput
+Use less hardcoded variables, and instead give them as a parameter. Examlple GetGRINumb... it would be nice if you could provide the excel file name. Also makes it easier to test
+In excel manager function of line 62. Needs a comment to describe what it is doing, specially since it has a magick number of 38 and 39
+ExcelManager could use some refactoring. Namely why does the ReadMultiple... not use ReadRowFromExcel
+Better variable names for the cells. Most people have 0 clue as to what the cell A is in the excelsheet (def most creaters too), so call it by the header instead ie. GRNum
+In program.cs line 56: Cheks seems unnecesary since ReadMulti.... already makes that check

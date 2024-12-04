@@ -8,7 +8,7 @@ int threadDevider = 1000; //A magic number for have many rows i want in a thread
 try
 {
     //Setup for functions
-    ExcelManager excelManager = new ExcelManager();
+    ExcelManager excelManager = new ExcelManager("GRI_2017_2020.xlsx","Metadata2006_2016.xlsx");
     HTTP_Manager httpManager = new HTTP_Manager();
 
     //Find rows
@@ -40,7 +40,7 @@ try
     var tasks = new List<Task<List<URL_Data>>>();
     for (int i = 0; i < rowChunks.Count; i++)
     {
-        tasks.Add(excelManager.ReadMultipulRowsWithLinks(ExcelManager.GRI_dataPath, rowChunks[i].Item1, rowChunks[i].Item2));
+        tasks.Add(excelManager.ReadMultipulRowsWithLinks(excelManager.GRI_dataPath, rowChunks[i].Item1, rowChunks[i].Item2));
     }
 
     //Wait for all rows to be read
@@ -53,14 +53,6 @@ try
         collectedData.AddRange(item);
     }
 
-    // Find bad results
-    for (global::System.Int32 i = 0; i < collectedData.Count; i++)
-    {
-        if (collectedData[i].BR_Nummer == string.Empty)
-            collectedData[i].validLink = false;
-        else if(collectedData[i].URL == string.Empty)
-            collectedData[i].validLink = false;
-    }
 
     // Download
     // Devide into task
@@ -71,7 +63,7 @@ try
     {
         if (collectedData[i].validLink)
         {
-            downloadTasks.Add(httpManager.DownloadFileAsync(collectedData[i], i));
+            downloadTasks.Add(httpManager.DownloadFileAsync(collectedData[i], i, "downloads"));
         }
     }
     var downloadResult = await Task.WhenAll(downloadTasks);

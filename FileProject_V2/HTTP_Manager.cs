@@ -9,25 +9,17 @@ namespace FileProject
         /// Manage the HTTP request and download
         /// </summary>
 
-        private readonly HttpClient client = new();
-        //Download path
-        private string downloadsPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                "Downloads");
-
         //To test
         Random r = new Random(22);
 
-        public async Task<(int, bool)> DownloadFileAsync(URL_Data data, int collextionIndex)
+        public async Task<(int, bool)> DownloadFileAsync(URL_Data data, int collextionIndex, string downloadsPath)
         {
             var errorReturn = (collextionIndex, false);
             try
             {
 
-                // Get the Downloads folder path
-                string downloadsPath = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                    "Downloads");
+		//Ensures that the downloads path exist
+		System.IO.Directory.CreateDirectory(downloadsPath);
 
                 // Generate a unique filename
                 string uniqueFileName = Path.Combine(downloadsPath, $"temp_{Guid.NewGuid()}.pdf");
@@ -43,30 +35,24 @@ namespace FileProject
                     if (response.IsSuccessStatusCode)
                     {
                         //Check for content
-                        if (response.Content.Headers.ContentLength.Value > 0 &&
-                            response.Content.Headers.ContentType.MediaType == "application/pdf")
-                        {
-                            //Download Content
-                            using (var fileStream = new FileStream(uniqueFileName, FileMode.Create))
-                            {
-                                await response.Content.CopyToAsync(fileStream);
-                            }
+				if (response.Content.Headers.ContentLength.Value > 0 &&
+				    response.Content.Headers.ContentType.MediaType == "application/pdf")
+				{
+				    //Download Content
+				    using (var fileStream = new FileStream(uniqueFileName, FileMode.Create))
+				    {
+					await response.Content.CopyToAsync(fileStream);
+				    }
 
-                            // Rename the file
-                            File.Move(uniqueFileName, Path.Combine(downloadsPath, data.BR_Nummer + ".pdf"));
+				    // Rename the file
+				    File.Move(uniqueFileName, Path.Combine(downloadsPath, data.BR_Nummer + ".pdf"));
 
-                            //Tell download status
-                            return (collextionIndex, true);
-                        }
-                        //else
-                        //{
-                        //    //Debug HTTP request
-                        //    Console.WriteLine($"{data.BR_Nummer}, Lenght: {response.Content.Headers.ContentLength.Value}. Type: {response.Content.Headers.ContentType.MediaType}");
-                        //}
+				    //Tell download status
+				    return (collextionIndex, true);
+				}
                     }
                     else
                     {
-                        //Console.WriteLine($"{data.BR_Nummer}: {response}"); Tell respond
                         return errorReturn;
                     }
                 }
