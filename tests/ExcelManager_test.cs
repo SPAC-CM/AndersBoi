@@ -9,6 +9,7 @@ namespace ExcelManager_unitTests
 		private ExcelManager manager;
 		[SetUp]
 		public void SetUp(){
+			Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
 			manager = new ExcelManager(@"..\..\..\GRI_2017_2020.xlsx",@"..\..\..\Metadata2006_2016.xlsx");
 		}
 
