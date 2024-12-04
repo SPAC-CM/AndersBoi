@@ -7,10 +7,12 @@ namespace ExcelManager_unitTests
 	public class Test_ExcelManager{
 
 		private ExcelManager manager;
+		private string GRI_Path = System.IO.Path.Combine({"..","..","..","GRI_2017_2020.xlsx"});
+		private string Meta_Path = System.IO.Path.Combine({"..","..","..","Metadata2006_2016.xlsx"});
+		
 		[SetUp]
 		public void SetUp(){
-			Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
-			manager = new ExcelManager(@"..\..\..\GRI_2017_2020.xlsx",@"..\..\..\Metadata2006_2016.xlsx");
+			manager = new ExcelManager(GRI_Path,Meta_Path);
 		}
 
 		[Test]
@@ -22,7 +24,7 @@ namespace ExcelManager_unitTests
 
 		[Test]
 		public void ReadRowFromExcel_Should_Be_X(){
-			var result = manager.ReadRowFromExcel(@"..\..\..\GRI_2017_2020.xlsx",1);
+			var result = manager.ReadRowFromExcel(GRI_Path,1);
 			var actual1 = "BRnum";
 			var actual2 = "Pdf_URL";
 			Assert.That(result.BR_Nummer,Is.EqualTo(actual1));
@@ -32,7 +34,7 @@ namespace ExcelManager_unitTests
 
 		[Test]
 		public async Task ReadMultipleRows_Should_Read_Two_Success(){
-			var result = await manager.ReadMultipulRowsWithLinks(@"..\..\..\GRI_2017_2020.xlsx",1,3);
+			var result = await manager.ReadMultipulRowsWithLinks(GRI_Path,1,3);
 
 			Assert.That(result[0].validLink,Is.EqualTo(false));
 			Assert.That(result[1].validLink,Is.EqualTo(true));
