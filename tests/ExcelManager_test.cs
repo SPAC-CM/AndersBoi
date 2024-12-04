@@ -7,11 +7,14 @@ namespace ExcelManager_unitTests
 	public class Test_ExcelManager{
 
 		private ExcelManager manager;
-		private string GRI_Path = System.IO.Path.Combine({"..","..","..","GRI_2017_2020.xlsx"});
-		private string Meta_Path = System.IO.Path.Combine({"..","..","..","Metadata2006_2016.xlsx"});
-		
+		string[] gri_paths = {@"..",@"..",@"..",@"GRI_2017_2020.xlsx"};
+		private string GRI_Path;
+		string[] meta_paths = {@"..",@"..",@"..",@"Metadata2006_2016.xlsx"};
+		private string Meta_Path;		
 		[SetUp]
 		public void SetUp(){
+			GRI_Path = System.IO.Path.Combine(gri_paths);
+			Meta_Path =  System.IO.Path.Combine(meta_paths);
 			manager = new ExcelManager(GRI_Path,Meta_Path);
 		}
 
