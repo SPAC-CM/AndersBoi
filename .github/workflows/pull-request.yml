@@ -1,4 +1,4 @@
-name: build
+name: test and reveiw
 
 on:
   pull_request:
