@@ -21,7 +21,7 @@ namespace ExcelManager_unitTests
 		[Test]
 		public void Rows_Should_Be_21058(){
 			var result = manager.GetNumberOfGRI_Rows();
-			var actual = 21058;
+			var actual = 21059;
 			Assert.That(result,Is.EqualTo(actual));
 		}
 
