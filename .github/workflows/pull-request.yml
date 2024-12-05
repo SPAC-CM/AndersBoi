@@ -30,6 +30,7 @@ jobs:
       - name: Asking for review
         uses: Automattic/action-required-review@v3
         with:
+          token: ${{ secrets.REQUIRED_REVIEWS_TOKEN }}
           requirements: |
             - paths: unmatched
               teams:
