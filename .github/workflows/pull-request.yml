@@ -33,4 +33,4 @@ jobs:
           requirements: |
             - paths: unmatched
               teams:
-                - @SPAC-CM
+                - maintenance@SPAC-CM
