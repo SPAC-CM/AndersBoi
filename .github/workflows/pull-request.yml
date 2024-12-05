@@ -31,5 +31,6 @@ jobs:
         uses: Automattic/action-required-review@v3
         with:
           requirements: |
-            - teams:
+            - paths: unmatched
+              teams:
                 - @SPAC-CM
