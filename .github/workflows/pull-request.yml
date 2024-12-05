@@ -1,8 +1,9 @@
-name: build
+name: test and reveiw
 
 on:
+  pull_request_review:
   pull_request:
-    types: [opened,reopened]
+    types: [opened, reopened, synchronize]
 
 jobs:
 
@@ -22,13 +23,3 @@ jobs:
         run: dotnet build
       - name: Test
         run: dotnet test
-  
-  check:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Asking for review
-        uses: Automattic/action-required-review@v3
-        with:
-          requirements: |
-            - @SPAC-CM

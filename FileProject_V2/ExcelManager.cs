@@ -132,6 +132,7 @@ public class ExcelManager
         }
 	return values;
     }
+
     /// <summary>
     /// Write a rapport if the result of the program to folder
     /// </summary>
