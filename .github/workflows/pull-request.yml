@@ -1,10 +1,8 @@
 name: build
 
 on:
-  push:
-    branches:
-      - '**'
-      - '!main'
+  pull-request:
+    types: [opened,reopened]
 
 jobs:
 
@@ -24,4 +22,12 @@ jobs:
         run: dotnet build
       - name: Test
         run: dotnet test
+  
+  check:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Asking for review
+        uses: Automattic/action-required-review@v3
+        with:
+          requirements: @SPAC-CM
