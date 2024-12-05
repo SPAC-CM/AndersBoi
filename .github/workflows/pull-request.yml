@@ -23,16 +23,3 @@ jobs:
         run: dotnet build
       - name: Test
         run: dotnet test
-  
-  check:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Asking for review
-        uses: Automattic/action-required-review@v3
-        with:
-          token: ${{ secrets.REQUIRED_REVIEWS_TOKEN }}
-          requirements: |
-            - paths: unmatched
-              teams:
-                - maintenance@SPAC-CM
