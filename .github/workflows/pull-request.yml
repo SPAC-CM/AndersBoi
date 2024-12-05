@@ -30,4 +30,5 @@ jobs:
       - name: Asking for review
         uses: Automattic/action-required-review@v3
         with:
-          requirements: @SPAC-CM
+          requirements: |
+            - @SPAC-CM
